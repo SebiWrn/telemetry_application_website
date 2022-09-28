@@ -1,6 +1,6 @@
-# Telemetry Application - Website
+# <img src="/src/assets/logo/telemetry_logo.png" width="50" height="50" /> Telemetry Application - Website 
 Hi! This is the code for our website for our Telemetry Application!
-![Logo Image](/src/assets/logo/telemetry_logo.png =50x50)
+
 
 ## About us
 We are a small team of three people and we are developing a application to view the telemetry data of your favourite racing games.
