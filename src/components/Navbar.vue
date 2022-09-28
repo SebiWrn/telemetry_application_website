@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
-    <router-link :to="{ name: 'home'}" :class="{responsive : responsive}"><img src="@/assets/logo/telemetry_logo_dark.png" alt=""><span>Home</span></router-link>
+    <a :class="{responsive : responsive}" @click="responsiveButton"><img src="@/assets/logo/telemetry_logo_dark.png" alt=""><span>Home</span></a>
+    <router-link :to="{ name: 'home'}" class="onlyMobile" :class="{responsive : responsive}" @click="responsiveButton"><span>Home</span></router-link>
     <router-link :to="{ name: 'roadmap'}" :class="{responsive : responsive}"><span>Roadmap</span></router-link>
     <router-link :to="{ name: 'impressum'}" :class="{responsive : responsive}"><span>Impressum</span></router-link>
   </div>
@@ -11,7 +12,21 @@ export default {
   name: 'NavBar',
   data() {
     return {
-        responsive: true,
+        responsive: false,
+    }
+  },
+  methods: {
+    responsiveButton() {
+      if(window.innerHeight > window.innerWidth) {
+        this.responsive = !this.responsive;
+      } else {
+        this.$router.push({ name: 'home'});
+      }
+    },
+  },
+  watch: {
+    $route: function () {
+      this.responsive = false;
     }
   }
 }
@@ -29,44 +44,49 @@ img {
 .navbar {
   background-color: $dark_gray;
   height: 50px;
-}
 
-.navbar a {
-  display: flex;
-  height: 100%;
-  float: left;
-  background-color: $medium_gray;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  outline-color: black;
-  padding: 5px;
-  color: $text_color;
-  text-decoration: none;
-  align-items: center;
+  a {
+    display: flex;
+    height: 100%;
+    float: left;
+    background-color: $medium_gray;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline-color: black;
+    padding: 5px;
+    color: $text_color;
+    text-decoration: none;
+    align-items: center;
 
-  &:not(:first-child) {
-    &:not(:last-child) {
-      margin-left: -2px;
+    &:not(:first-child) {
+      &:not(:last-child) {
+        margin-left: -1px;
+        @media screen and (orientation: portrait) {
+          margin-left: 0px;
+        }
+      }
+
+      &:last-child {
+        float: right;
+      }
     }
 
-    &:last-child {
-      float: right;
+
+    &:hover {
+      opacity: .7;
     }
-  }
 
+    @media screen and (orientation:portrait) {
+      position: relative;
+      left: 0;
 
-  &:hover {
-    opacity: .7;
-  }
+      &:first-child {
+        width: fit-content;
 
-  @media screen and (orientation:portrait) {
-    position: relative;
-
-    &:first-child {
         padding: 0;
         span {
             display: none
@@ -74,6 +94,38 @@ img {
         img {
             margin: 0
         }
+      }
+    }
+  }
+
+  @media screen and (orientation:portrait) {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0);
+    height: 100px;
+    font-size: 200%;
+
+    a {
+      display: none;
+    }
+
+    a:first-child {
+      width: fit-content;
+      display: flex;
+    }
+
+    .responsive {
+      display: flex;
+      width: 50vw;
+      left: 0;
+      margin: 0;
+    }
+  }
+
+  @media screen and (orientation: landscape){
+    .onlyMobile {
+      display: none;
     }
   }
 }
