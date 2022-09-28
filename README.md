@@ -1,6 +1,6 @@
 # Telemetry Application - Website
 Hi! This is the code for our website for our Telemetry Application!
-![Logo Image](https://www.google.com/url?sa=i&url=https://www.istockphoto.com/de/fotos/testbild&psig=AOvVaw2_8A7wvtkVSxiUzEL_i1rw&ust=1664439663831000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCMDt0IqHt_oCFQAAAAAdAAAAABAD)
+![Logo Image](/src/assets/logo/telemetry_logo.png)
 
 ## About us
 We are a small team of three people and we are developing a application to view the telemetry data of your favourite racing games.
