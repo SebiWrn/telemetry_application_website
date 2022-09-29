@@ -106,7 +106,7 @@ img {
     }
 
     &:hover {
-      opacity: 0.7;
+      filter: contrast(1.2);
     }
 
     @media screen and (orientation: portrait) {
@@ -162,6 +162,10 @@ img {
     .active {
       background-color: $hightlighted;
     }
+  }
+
+  span:hover, a {
+    cursor: pointer;
   }
 }
 </style>
