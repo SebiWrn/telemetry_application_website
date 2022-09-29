@@ -1,15 +1,17 @@
 <template>
-  <NavBar/>
-  <router-view/>
+  <NavBar />
+  <div class="router-view-container">
+    <router-view />
+  </div>
 </template>
 
 <script>
-import NavBar from '@/components/Navbar.vue';
+import NavBar from "@/components/Navbar.vue";
 export default {
   components: {
-    NavBar
-  }
-}
+    NavBar,
+  },
+};
 </script>
 
 <style lang="scss">
@@ -19,5 +21,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.router-view-container {
+  @media screen and (orientation: landscape) {
+    padding-top: 50px;
+  }
 }
 </style>

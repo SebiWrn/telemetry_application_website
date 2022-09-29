@@ -1,25 +1,25 @@
 <template>
   <div class="home">
     <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <TelemetryApplicationMain/>
-    <ImportantLinks/>
+    <TelemetryApplicationMain />
+    <ImportantLinks />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-import TelemetryApplicationMain from '@/components/TelemetryApplicationMain.vue'
-import ImportantLinks from '@/components/ImportantLinks.vue'
+import TelemetryApplicationMain from "@/components/TelemetryApplicationMain.vue";
+import ImportantLinks from "@/components/ImportantLinks.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     //HelloWorld
     TelemetryApplicationMain,
-    ImportantLinks
-  }
-}
+    ImportantLinks,
+  },
+};
 </script>
 
 <style lang="sass" scoped>
