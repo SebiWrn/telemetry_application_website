@@ -77,6 +77,10 @@ h4 {
   text-align: start;
   padding-left: 2ch;
   color: $medium_blue;
+  @media screen and (orientation: landscape) {
+    padding-left: 25ch;
+    font-size: 120%;
+  }
 }
 
 p {
@@ -85,5 +89,10 @@ p {
   text-align: left;
   line-height: 1.5em;
   color: $washed_blue;
+  @media screen and (orientation: landscape) {
+    padding-left: 25ch;
+    padding-right: 25ch;
+    font-size: 120%;
+  }
 }
 </style>
