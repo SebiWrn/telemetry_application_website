@@ -34,6 +34,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+
 img {
     display: flex;
     height: 100%;
@@ -56,7 +57,6 @@ img {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    outline-color: black;
     padding: 5px;
     color: $text_color;
     text-decoration: none;
@@ -117,7 +117,7 @@ img {
 
     .responsive {
       display: flex;
-      width: 50vw;
+      width: 12ch;
       left: 0;
       margin: 0;
     }

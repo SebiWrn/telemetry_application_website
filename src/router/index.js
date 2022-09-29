@@ -18,12 +18,12 @@ const routes = [
   {
     path: '/impressum',
     name: 'impressum',
-    component: () => import('@/views/ImpressumView.vue')
+    component: () => import(/* webpackChunkName: "impressum" */ '@/views/ImpressumView.vue')
   },
   {
     path: '/roadmap',
     name: 'roadmap',
-    component: () => import('@/views/RoadmapView.vue')
+    component: () => import(/* webpackChunkName: "roadmap" */ '@/views/RoadmapView.vue')
   }
 ]
 
