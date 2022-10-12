@@ -1,25 +1,23 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" :class="{navbar_small: !unfolded}">
     <div class="sidebar">
-      <a>
+      <a @click="unfold" class="hover_pointer">
         <img src="@/assets/logo/telemetry_logo_dark.png" />
       </a>
-      <a>
+      <router-link :to="{ name: 'home' }" :class="{ responsive: responsive, active: active === 'home' }">
         <img src="@/assets/icons/home.svg" />
-      </a>
-      <a>
+      </router-link>
+      <router-link :to="{ name: 'roadmap' }" :class="{ responsive: responsive, active: active === 'roadmap' }">
         <img src="@/assets/icons/map.svg" />
-      </a>
-      <a>
+      </router-link>
+      <router-link :to="{ name: 'impressum' }" :class="{ responsive: responsive, active: active === 'impressum' }">
         <img src="@/assets/icons/document.svg" />
-      </a>
+      </router-link>
     </div>
     <div class="responsive_move">
       <router-link
         :to="{ name: 'home' }"
-        class="onlyMobile"
-        :class="{ responsive: responsive }"
-        @click="responsiveButton">
+        :class="{ responsive: responsive, active: active === 'home' }">
         <span>Home</span>
       </router-link>
       <router-link
@@ -44,6 +42,9 @@ export default {
       responsive: false,
     };
   },
+  props: {
+    unfolded: Boolean
+  },
   computed: {
     active() {
       return this.$route.name;
@@ -57,6 +58,9 @@ export default {
         this.$router.push({ name: "home" });
       }
     },
+    unfold() {
+      this.$emit('unfold');
+    }
   },
   watch: {
     $route: function () {
@@ -77,24 +81,40 @@ img {
 
 .navbar {
   background-color: $dark_gray;
-  height: 100vh;
+  height: 100%;
   width: 150px;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: row;
+
+  @media screen and (min-width: 1000px) {
+    width: 180px;
+  }
 
   .sidebar {
     width: 40px;
 
+    @media screen and (min-width: 1000px) {
+      width: 60px;
+    }
+
     a:not(:first-child) {
       img {
-        filter: invert(100%) sepia(1%) saturate(1434%) hue-rotate(145deg)
-          brightness(112%) contrast(77%);
         width: 30px;
         padding: 5px;
+        filter: invert(100%) sepia(1%) saturate(1434%) hue-rotate(145deg) brightness(112%) contrast(77%);
+
+        @media screen and (min-width: 1000px) {
+          width: 40px;
+          padding: 10px;
+        }
       }
     }
+
+
   }
+
+  
 
   .responsive_move {
     display: flex;
@@ -102,6 +122,10 @@ img {
     padding: 0px 10px;
     margin-top: 40px;
     align-items: left;
+
+    @media screen and (min-width: 1000px) {
+      margin-top: 60px;
+    }
   }
 
   a {
@@ -109,14 +133,27 @@ img {
     text-decoration: none;
     text-align: left;
     padding: 11px 0px;
+
+    @media screen and (min-width: 1000px) {
+      padding: 21px 0px;
+    }
   }
 }
 
-.navbar-small {
+.navbar_small {
   width: 40px;
+
+  @media screen and (min-width: 1000px) {
+    width: 60px;
+  }
 
   .responsive_move {
     display: none;
   }
 }
+
+.hover_pointer:hover {
+  cursor: pointer;
+}
+
 </style>

@@ -5,7 +5,7 @@
 
     <h4>About us</h4>
     <p>
-      We are a small team of three people and we are developing a application to
+      We are a small team of three people and we are developing an application to
       view the telemetry data of your favourite racing games. If you want to
       help us with our project feel free to join our discord server or visit our
       website

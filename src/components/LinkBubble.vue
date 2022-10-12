@@ -47,15 +47,18 @@ a {
     height: 80%;
   }
 
-  @media screen and (orientation: portrait) {
-    width: 30vw;
-    height: 30vw;
-  }
-
   h3 {
     color: $text_color;
     font-size: 2em;
     margin-top: 0.5em;
+  }
+
+  @media screen and (orientation: portrait) {
+    width: 20vw;
+    height: 20vw;
+    h3 {
+      font-size: 1.5em;
+    }
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <NavBar />
-  <div class="router-view-container">
+  <NavBar :unfolded="!small" v-on:unfold="handleUnfold" />
+  <div class="router-view-container" :class="{small: small}">
     <router-view />
   </div>
 </template>
@@ -11,6 +11,16 @@ export default {
   components: {
     NavBar,
   },
+  data() {
+    return {
+      small: true,
+    };
+  },
+  methods: {
+    handleUnfold() {
+      this.small = !this.small;
+    }
+  }
 };
 </script>
 
@@ -24,8 +34,18 @@ export default {
 }
 
 .router-view-container {
-  @media screen and (orientation: landscape) {
-    padding-top: 50px;
+  padding-left: 140px;
+  padding-top: 40px;
+
+  @media screen and (min-width: 800px) {
+    padding-left: 180px;
+  }
+}
+
+.small {
+  padding-left: 40px;
+  @media screen and (min-width: 800px) {
+    padding-left: 60px;
   }
 }
 </style>
