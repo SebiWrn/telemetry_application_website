@@ -1,29 +1,38 @@
 <template>
   <div class="navbar">
-    <a
-      :class="{ responsive: responsive, active: active === 'home' }"
-      @click="responsiveButton"
-      ><img src="@/assets/logo/telemetry_logo_dark.png" alt="" /><span
-        >Home</span
-      ></a
-    >
-    <router-link
-      :to="{ name: 'home' }"
-      class="onlyMobile"
-      :class="{ responsive: responsive }"
-      @click="responsiveButton"
-      ><span>Home</span></router-link
-    >
-    <router-link
-      :to="{ name: 'roadmap' }"
-      :class="{ responsive: responsive, active: active === 'roadmap' }"
-      ><span>Roadmap</span></router-link
-    >
-    <router-link
-      :to="{ name: 'impressum' }"
-      :class="{ responsive: responsive, active: active === 'impressum' }"
-      ><span>Impressum</span></router-link
-    >
+    <div class="sidebar">
+      <a>
+        <img src="@/assets/logo/telemetry_logo_dark.png" />
+      </a>
+      <a>
+        <img src="@/assets/icons/home.svg" />
+      </a>
+      <a>
+        <img src="@/assets/icons/map.svg" />
+      </a>
+      <a>
+        <img src="@/assets/icons/document.svg" />
+      </a>
+    </div>
+    <div class="responsive_move">
+      <router-link
+        :to="{ name: 'home' }"
+        class="onlyMobile"
+        :class="{ responsive: responsive }"
+        @click="responsiveButton">
+        <span>Home</span>
+      </router-link>
+      <router-link
+        :to="{ name: 'roadmap' }"
+        :class="{ responsive: responsive, active: active === 'roadmap' }">
+        <span>Roadmap</span>
+      </router-link>
+      <router-link
+        :to="{ name: 'impressum' }"
+        :class="{ responsive: responsive, active: active === 'impressum' }">
+        <span>Impressum</span>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -62,110 +71,52 @@ export default {
 <style scoped lang="scss">
 img {
   display: flex;
-  height: 100%;
-  float: left;
+  width: 100%;
   margin-right: 5px;
 }
 
 .navbar {
   background-color: $dark_gray;
-  height: 50px;
-  @media screen and (orientation: landscape) {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  height: 100vh;
+  width: 150px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+
+  .sidebar {
+    width: 40px;
+
+    a:not(:first-child) {
+      img {
+        filter: invert(100%) sepia(1%) saturate(1434%) hue-rotate(145deg)
+          brightness(112%) contrast(77%);
+        width: 30px;
+        padding: 5px;
+      }
+    }
+  }
+
+  .responsive_move {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    margin-top: 40px;
+    align-items: left;
   }
 
   a {
-    display: flex;
-    height: 100%;
-    float: left;
-    background-color: $medium_gray;
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    padding: 5px;
     color: $text_color;
     text-decoration: none;
-    align-items: center;
-
-    &:not(:first-child) {
-      &:not(:last-child) {
-        margin-left: -1px;
-        @media screen and (orientation: portrait) {
-          margin-left: 0px;
-        }
-      }
-
-      &:last-child {
-        float: right;
-      }
-    }
-
-    &:hover {
-      filter: contrast(1.2);
-    }
-
-    @media screen and (orientation: portrait) {
-      position: relative;
-      left: 0;
-
-      &:first-child {
-        width: fit-content;
-
-        padding: 0;
-        span {
-          display: none;
-        }
-        img {
-          margin: 0;
-        }
-      }
-    }
+    text-align: left;
+    padding: 11px 0px;
   }
+}
 
-  @media screen and (orientation: portrait) {
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(255, 255, 255, 0);
-    height: 100px;
-    font-size: 200%;
+.navbar-small {
+  width: 40px;
 
-    a {
-      display: none;
-    }
-
-    a:first-child {
-      width: fit-content;
-      display: flex;
-    }
-
-    .responsive {
-      display: flex;
-      width: 12ch;
-      left: 0;
-      margin: 0;
-    }
-  }
-
-  @media screen and (orientation: landscape) {
-    .onlyMobile {
-      display: none;
-    }
-  }
-
-  @media screen and (orientation: landscape) {
-    .active {
-      background-color: $hightlighted;
-    }
-  }
-
-  span:hover, a {
-    cursor: pointer;
+  .responsive_move {
+    display: none;
   }
 }
 </style>

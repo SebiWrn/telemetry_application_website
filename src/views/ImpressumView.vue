@@ -2,6 +2,13 @@
   <div class="impressum">
     <h1>Impressum</h1>
     <p>TODO</p>
+    <p>Iconset: Typicons (https://www.iconfinder.com/iconsets/typicons-2)</p>
+    <p>Author: Stephen Hutchings (http://typicons.com/)</p>
+    <p>
+      License: Creative Commons (Attribution-Share Alike 3.0 Unported)
+      (http://creativecommons.org/licenses/by-sa/3.0/)
+    </p>
+    <p>Download date: 2022-10-12</p>
 
     <div class="footer">
       <span><p>© Copyright Telemetry Application</p></span>
