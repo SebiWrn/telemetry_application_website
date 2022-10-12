@@ -7,5 +7,8 @@ module.exports = defineConfig({
         additionalData: `@import "@/styles/variables.scss"; @import "@/styles/base.scss";`
       }
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/'
+    : '/'
 })
