@@ -24,6 +24,27 @@ const routes = [
     path: '/privacy-policy',
     name: 'privacy-policy',
     component: () => import(/* webpackChunkName: "roadmap" */ '@/views/PrivacyPolicy.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "roadmap" */ '@/views/Profile.vue'),
+    children: [
+      {
+        path: '',
+        redirect: {name: 'profile-dashboard'},
+      },
+      {
+        path: 'dashboard',
+        name: 'profile-dashboard',
+        component: () => import(/* webpackChunkName: "roadmap" */ '@/components/ProfileDashboard.vue')
+      },
+      {
+        path: 'settings',
+        name: 'profile-settings',
+        component: () => import(/* webpackChunkName: "roadmap" */ '@/components/ProfileDashboard.vue')
+      }
+    ]
   }
 ]
 
