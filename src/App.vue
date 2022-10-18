@@ -36,5 +36,9 @@ export default {
 
 .router-view {
   transition: 0.5s;
+
+  @media screen and (max-aspect-ratio: 1/1) {
+    padding-left: 70px;
+  }
 }
 </style>
