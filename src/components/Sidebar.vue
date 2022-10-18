@@ -32,6 +32,12 @@
       <span class="icons"><img src="@/assets/icons/document.svg" /></span>
       <span class="icon-text">Impressum</span>
     </router-link>
+    <router-link
+      :to="{ name: 'profile-dashboard' }"
+      @click="minimizeSidebar">
+      <span class="icons"><img src="@/assets/icons/cog_outline.svg" /></span>
+      <span class="icon-text">Settings</span>
+    </router-link>
   </div>
 </template>
 
@@ -59,7 +65,7 @@ export default {
       this.$emit("toggleSidebar");
     },
     minimizeSidebar() {
-      if (!this.mini) {
+      if (!this.mini && this.supportsTouch) {
         this.$emit("toggleSidebar");
       }
     },
