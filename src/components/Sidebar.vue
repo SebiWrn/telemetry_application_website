@@ -46,7 +46,6 @@ export default {
     top: 0;
     left: 0;
     background-color: $light_background;
-    padding-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

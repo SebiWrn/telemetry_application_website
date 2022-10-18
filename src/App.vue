@@ -1,6 +1,7 @@
 <template>
   <SideBar :mini="mini" v-on:toggleSidebar="toggleSidebar"/>
-  <div class="router-view" :style="{ 'padding-left': mini ? '70px' : '250px' }">
+  <!--<div class="router-view" :style="{ 'padding-left': mini ? '70px' : '250px' }">-->
+  <div class="router-view">
     <router-view/>
   </div>
 </template>
