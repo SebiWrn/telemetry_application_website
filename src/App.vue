@@ -1,24 +1,24 @@
 <template>
-  <NavBar :unfolded="!small" v-on:unfold="handleUnfold" />
-  <div class="router-view-container" :class="{small: small}">
-    <router-view />
+  <SideBar :mini="mini" v-on:toggleSidebar="toggleSidebar"/>
+  <div class="router-view" :style="{ 'padding-left': mini ? '70px' : '250px' }">
+    <router-view/>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/Navbar.vue";
+import SideBar from "@/components/Sidebar.vue"
 export default {
   components: {
-    NavBar,
+    SideBar
   },
   data() {
     return {
-      small: true,
+      mini: true,
     };
   },
   methods: {
-    handleUnfold() {
-      this.small = !this.small;
+    toggleSidebar() {
+      this.mini = !this.mini;
     }
   }
 };
@@ -30,22 +30,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $main_background;
 }
 
-.router-view-container {
-  padding-left: 140px;
-  padding-top: 40px;
-
-  @media screen and (min-width: 800px) {
-    padding-left: 180px;
-  }
-}
-
-.small {
-  padding-left: 40px;
-  @media screen and (min-width: 800px) {
-    padding-left: 60px;
-  }
+.router-view {
+  transition: 0.5s;
 }
 </style>
