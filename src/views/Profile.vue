@@ -54,9 +54,6 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  button {
-    color: $text_color;
-  }
 }
 
 .wrapper {
@@ -86,6 +83,8 @@ export default {
   border-top: none;
   border-right: none;
   border-radius: 5px;
+  font-size: 2vh;
+  color: $text_color;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);

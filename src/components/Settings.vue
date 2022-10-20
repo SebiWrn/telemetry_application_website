@@ -35,10 +35,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 li {
   list-style-type: none;
   display: grid;
   grid-template-columns: 90% 10%;
+
+  &:not(:first-child) {
+    padding-top: calc((1vw + 1vh) / 4);
+  }
 }
 
 .container {
