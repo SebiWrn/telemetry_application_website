@@ -1,6 +1,7 @@
 {
   "settings": [
-    "Einstellung 1",
-    "Einstellung 2"
+    {"value": "Einstellung 1", "default": false},
+    {"value": "Einstellung 2", "default": true},
+    {"value": "Einstellung 3", "default": false}
   ]
 }

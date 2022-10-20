@@ -3,12 +3,13 @@
     <div class="container">
       <ul>
         <li v-for="setting in settings" :key="setting">
-          <span class="setting">{{setting}}</span>
+          <span class="setting">{{setting.value}}</span>
           <input
             type="checkbox"
             class="setting-checkbox"
-            name=""
-            id="" />
+            :id="setting.value"
+            :checked="setting.default"
+            :ref="setting.value"/>
         </li>
       </ul>
     </div>
@@ -27,6 +28,13 @@ export default {
   computed: {
     settings() {
       return settingsImp.settings;
+    },
+    settingsValues() {
+      let ret = {};
+      this.settings.map((st) => st.value).map((st) => [st, this.$refs[st][0].checked]).forEach(element => {
+        ret[element[0]] = element[1];
+      });
+      return ret;
     }
   },
   mounted() {
