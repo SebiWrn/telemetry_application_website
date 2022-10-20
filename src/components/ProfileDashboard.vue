@@ -2,7 +2,13 @@
   <div class="dashboard">
     <div class="container">
       <img src="@/assets/imgs/blank-profile.png" alt="Blank Profile" id="profile_image">
-      <div class="Profile Information"></div>
+      <div id="profile_information">
+        <h2 id="name_label">Name:</h2>
+        <h2 id="name_value">{{name}}</h2>
+        <p id="email_label">EMail:</p>
+        <p id="email_value">{{email}}</p>
+
+      </div>
     </div>
 
   </div>
@@ -13,6 +19,12 @@
 export default {
   name: "ProfileView",
   components: {
+  },
+  data() {
+    return {
+      name: "Max Mustermann",
+      email: "max@mustermann.de"
+    }
   }
 };
 </script>
@@ -20,10 +32,30 @@ export default {
 <style lang="scss" scoped>
   .container {
     display: grid;
+    grid-template-columns: 20% 80%;
+    padding: calc((1vh + 1vw) / 2);
   }
 
   #profile_image {
-    width: calc((10vw + 10vh) / 1.5);
-    grid: 0 0;
+    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    border-radius: 5px;
+  }
+
+  #profile_information {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto auto 1fr;
+    row-gap: 1ch;
+    padding-left: calc((1vh + 1vw) / 2);
+  }
+
+  h1, h2, h4, p {
+    margin: 0;
+    text-align: left;
   }
 </style>
