@@ -1,34 +1,37 @@
 <template>
   <div class="profile">
     <div class="profile-sidebar">
-      <button class="tabs" @click="changeTabTo(0)">Dashboard</button>
-      <button class="tabs" @click="changeTabTo(1)">Datenschutz</button>
+      <button
+        class="tabs"
+        @click="changeTabTo(0)">
+        Dashboard
+      </button>
+      <button
+        class="tabs"
+        @click="changeTabTo(1)">
+        Settings
+      </button>
     </div>
     <div class="wrapper">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "ProfileView",
   data() {
     return {
-      tabs: [
-        {name: 'profile-dashboard'},
-        {name: 'profile-settings'}
-      ],
-    }
+      tabs: [{ name: "profile-dashboard" }, { name: "profile-settings" }],
+    };
   },
-  components: {
-  },
+  components: {},
   methods: {
     changeTabTo(tabNr) {
       this.$router.push(this.tabs[tabNr]);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -37,7 +40,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
+
   width: 100%;
   height: 100vh;
 }
@@ -51,6 +54,9 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  button {
+    color: $text_color;
+  }
 }
 
 .wrapper {
@@ -67,7 +73,18 @@ export default {
   vertical-align: middle;
   border: none;
   background-color: transparent;
-  border: 1px solid; border-image: linear-gradient(90deg, transparent 5%, $lighter_background 20%, $lighter_background 80%, transparent 95%) 1; border-left:none; border-top:none; border-right:none;
+  border: 1px solid;
+  border-image: linear-gradient(
+      90deg,
+      transparent 5%,
+      $separator_color 20%,
+      $separator_color 80%,
+      transparent 95%
+    )
+    1;
+  border-left: none;
+  border-top: none;
+  border-right: none;
   border-radius: 5px;
 
   &:hover {
@@ -76,6 +93,6 @@ export default {
 }
 
 .active {
-    background-color: rgba(0, 0, 0, 0.15);
-  }
+  background-color: rgba(0, 0, 0, 0.15);
+}
 </style>

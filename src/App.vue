@@ -1,16 +1,18 @@
 <template>
-  <SideBar :mini="mini" v-on:toggleSidebar="toggleSidebar"/>
+  <SideBar
+    :mini="mini"
+    v-on:toggleSidebar="toggleSidebar" />
   <!--<div class="router-view" :style="{ 'padding-left': mini ? '70px' : '250px' }">-->
   <div class="router-view">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-import SideBar from "@/components/Sidebar.vue"
+import SideBar from "@/components/Sidebar.vue";
 export default {
   components: {
-    SideBar
+    SideBar,
   },
   data() {
     return {
@@ -20,8 +22,8 @@ export default {
   methods: {
     toggleSidebar() {
       this.mini = !this.mini;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -37,8 +39,6 @@ export default {
 .router-view {
   transition: 0.5s;
 
-  @media screen and (max-aspect-ratio: 1/1) {
-    padding-left: 70px;
-  }
+  padding-left: 70px;
 }
 </style>

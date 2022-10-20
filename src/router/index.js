@@ -42,7 +42,7 @@ const routes = [
       {
         path: 'settings',
         name: 'profile-settings',
-        component: () => import(/* webpackChunkName: "roadmap" */ '@/components/ProfileDashboard.vue')
+        component: () => import(/* webpackChunkName: "roadmap" */ '@/components/Settings.vue')
       }
     ]
   }

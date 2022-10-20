@@ -57,5 +57,6 @@ export default {
   h1, h2, h4, p {
     margin: 0;
     text-align: left;
+    color: $text_color;
   }
 </style>
