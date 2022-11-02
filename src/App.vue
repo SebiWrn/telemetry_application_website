@@ -25,9 +25,9 @@ function initKeycloak() {
   });
   keycloak
     .init({
-      flow: "implicit"
-      //onLoad: "check-sso",
-      //silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso.html"
+      flow: "implicit",
+      onLoad: "check-sso",
+      silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso"
     })
     .then(function (authenticated) {
       alert(authenticated ? "authenticated" : "not authenticated");
