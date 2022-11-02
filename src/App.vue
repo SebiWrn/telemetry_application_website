@@ -15,49 +15,6 @@
 import SideBar from "@/components/Sidebar.vue";
 import oidc_settings from "@/config/oauth-config.json";
 
-import { UserManager, WebStorageStateStore } from 'oidc-client-ts';
-
-class AuthService {
-  constructor() {
-    const STS_DOMAIN = oidc_settings.issuer;
-
-    const settings = {
-      userStore: new WebStorageStateStore({ store: window.localStorage }),
-      authority: STS_DOMAIN,
-      client_id: oidc_settings.client_settings.client_id,
-      redirect_uri: oidc_settings.redirect_uri,
-      automaticSilentRenew: true,
-      silent_redirect_uri: oidc_settings.redirect_uri,
-      response_type: 'code',
-      scope: 'openid',
-      post_logout_redirect_uri: oidc_settings.redirect_uri,
-      filterProtocolClaims: true,
-    }
-
-    this.userManager = new UserManager(settings);
-  }
-
-  getUser() {
-    return this.userManager.getUser();
-  }
-
-  login() {
-    return this.userManager.signinRedirect();
-  }
-
-  logout() {
-    return this.userManager.signoutRedirect();
-  }
-
-  getAccessToken() {
-    return this.userManager.getUser().then((data) => {
-      return data.access_token;
-    })
-  }
-}
-
-const auth = new AuthService();
-
 export default {
   components: {
     SideBar,
@@ -65,21 +22,9 @@ export default {
   data() {
     return {
       mini: true,
-
-      currentUser: '',
-      accessTokenExpired: false,
-      isLoggedIn: false,
-      dataEventRecordsItems: [],
     };
   },
   mounted() {
-    auth.getUser().then((user) => {
-      this.currentUser = user.profile.name;
-      this.accessTokenExpired = user.expired;
-
-      this.isLoggedIn = (user !== null && !user.expired)
-      console.log("TRIED TO LOG IN")
-    })
   },
   computed: {
   },
@@ -88,10 +33,8 @@ export default {
       this.mini = !this.mini;
     },
     login() {
-      auth.login();
     },
     logout() {
-      auth.logout();
     },
   },
 };
