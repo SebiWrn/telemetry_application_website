@@ -27,7 +27,6 @@ const routes = [
   },
   {
     path: '/profile',
-    name: 'profile',
     component: () => import(/* webpackChunkName: "roadmap" */ '@/views/Profile.vue'),
     children: [
       {
