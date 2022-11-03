@@ -10,7 +10,7 @@ const keycloak = Keycloak(oauth_config);
 keycloak.init({
     onLoad: "check-sso",
     flow: "implicit",
-    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html'
+    silentCheckSsoRedirectUri: window.location.origin + '/static/silent-check-sso.html'
 })
 
 const app = createApp(App)
