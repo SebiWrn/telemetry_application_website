@@ -34,13 +34,13 @@ export default {
       this.mini = !this.mini;
     },
     login() {
-      //this.$store.state.keycloak.login();
+      this.$keycloak.login();
     },
     logout() {
-      //keycloak.logout();
+      this.$keycloak.logout();
     },
     logUserData() {
-      //console.log(keycloak.idTokenParsed);
+      console.log(this.$keycloak.idTokenParsed);
     },
   },
 };
