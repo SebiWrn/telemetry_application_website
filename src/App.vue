@@ -1,6 +1,7 @@
 <template>
   <button @click="login">LOGIN</button>
   <button @click="logUserData">logUserData</button>
+  <button @click="logout">LOGOUT</button>
   {{ currentUser }}
   <SideBar :mini="mini" v-on:toggleSidebar="toggleSidebar" />
   <!--<div class="router-view" :style="{ 'padding-left': mini ? '70px' : '250px' }">-->
@@ -26,8 +27,8 @@ function initKeycloak() {
   keycloak
     .init({
       flow: "implicit",
-      onLoad: "check-sso",
-      silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso"
+      //onLoad: "check-sso",
+      //silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso"
     })
     .then(function (authenticated) {
       alert(authenticated ? "authenticated" : "not authenticated");
@@ -57,7 +58,9 @@ export default {
     login() {
       keycloak.login();
     },
-    logout() {},
+    logout() {
+      keycloak.logout();
+    },
     logUserData() {
       console.log(keycloak.idTokenParsed);
     }

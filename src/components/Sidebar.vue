@@ -4,40 +4,36 @@
     class="sidebar"
     :onmouseover="toggleSidebar"
     :onmouseout="toggleSidebar"
-    :style="{ width: mini ? '70px' : '250px' }">
-    <a
-      id="menu-button"
-      @click="touchToggleSidebar">
+    :style="{ width: mini ? '70px' : '250px' }"
+  >
+    <a id="menu-button" @click="touchToggleSidebar">
       <span>
         <img
           src="@/assets/icons/menu_outline.svg"
-          :style="{ transform: mini ? none : 'rotate(90deg)' }" />
+          :style="{ transform: mini ? none : 'rotate(90deg)' }"
+        />
       </span>
     </a>
-    <router-link
-      :to="{ name: 'home' }"
-      @click="minimizeSidebar">
+    <router-link :to="{ name: 'home' }" @click="minimizeSidebar">
       <span class="icons"><img src="@/assets/icons/home_outline.svg" /></span>
       <span class="icon-text">Home</span>
     </router-link>
-    <router-link
-      :to="{ name: 'roadmap' }"
-      @click="minimizeSidebar">
+    <router-link :to="{ name: 'roadmap' }" @click="minimizeSidebar">
       <span class="icons"><img src="@/assets/icons/map.svg" /></span>
       <span class="icon-text">Roadmap</span>
     </router-link>
-    <router-link
-      :to="{ name: 'impressum' }"
-      @click="minimizeSidebar">
+    <router-link :to="{ name: 'impressum' }" @click="minimizeSidebar">
       <span class="icons"><img src="@/assets/icons/document.svg" /></span>
       <span class="icon-text">Impressum</span>
     </router-link>
-    <router-link
-      :to="{ name: 'profile-dashboard' }"
-      @click="minimizeSidebar">
+    <router-link :to="{ name: 'profile-dashboard' }" @click="minimizeSidebar">
       <span class="icons"><img src="@/assets/icons/cog_outline.svg" /></span>
       <span class="icon-text">Settings</span>
     </router-link>
+    <a @click="login">
+      <span class="icons"><img src="@/assets/icons/key_outline.svg" /></span>
+      <span class="icon-text">Login</span>
+    </a>
   </div>
 </template>
 
@@ -69,6 +65,9 @@ export default {
         this.$emit("toggleSidebar");
       }
     },
+    login() {
+      alert("LOGIN");
+    }
   },
   watch: {},
   mounted() {},
