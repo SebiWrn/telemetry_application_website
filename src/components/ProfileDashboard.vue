@@ -20,6 +20,10 @@ export default {
   name: "ProfileView",
   components: {
   },
+  mounted() {
+    var oauth = this.$store.oauth;
+    this.name = oauth.idTokenParsed.name
+  },
   data() {
     return {
       name: "Max Mustermann",
