@@ -12,6 +12,7 @@
     "keycloak-js": "^20.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vuejs-logger": "^1.5.5",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

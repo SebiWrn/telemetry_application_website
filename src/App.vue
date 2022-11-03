@@ -12,44 +12,6 @@
 
 <script>
 import SideBar from "@/components/Sidebar.vue";
-import Keycloak from "keycloak-js";
-
-import oidc_settings from "@/config/oauth-config.json";
-
-setInterval(() => {
-  keycloak
-    .updateToken(30)
-    .then(() => {
-      console.log("Updated token");
-    })
-    .catch(function () {
-      alert("Failed to refresh token");
-    });
-}, 3000);
-
-let keycloak;
-
-function initKeycloak() {
-  keycloak = new Keycloak({
-    url: oidc_settings.url,
-    realm: oidc_settings.realm,
-    clientId: oidc_settings.clientId,
-  });
-  //keycloak.init({flow: 'implicit'})
-  keycloak
-    .init({
-      flow: "implicit",
-      onLoad: "check-sso",
-      silentCheckSsoRedirectUri:
-        window.location.origin + "/static/silent-check-sso.html",
-    })
-    .then(function () {
-      //alert(authenticated ? "authenticated" : "not authenticated");
-    })
-    .catch(function () {
-      //alert("failed to initlaize", error);
-    });
-}
 
 export default {
   components: {
@@ -61,11 +23,10 @@ export default {
     };
   },
   beforeMount() {
-    initKeycloak();
   },
   mounted() {
-    this.$store.commit("setOAuth", keycloak);
-    console.log(keycloak.idTokenParsed);
+    //this.$store.commit("setOAuth", keycloak);
+    //console.log(keycloak.idTokenParsed);
   },
   computed: {},
   methods: {
@@ -73,13 +34,13 @@ export default {
       this.mini = !this.mini;
     },
     login() {
-      keycloak.login();
+      //this.$store.state.keycloak.login();
     },
     logout() {
-      keycloak.logout();
+      //keycloak.logout();
     },
     logUserData() {
-      console.log(keycloak.idTokenParsed);
+      //console.log(keycloak.idTokenParsed);
     },
   },
 };
